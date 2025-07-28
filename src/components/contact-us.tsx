@@ -16,9 +16,9 @@ const ContactUs: React.FC = () => {
           Let&apos;s Make <span className="text-purple-400">History</span>
         </h2>
         <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-          If you believe &apos;small town&apos; doesn&apos;t mean small
-          dreams, want to learn digital skills that pay bills, or are tired of
-          marketing fluff and want real strategies — let&apos;s connect!
+          If you believe &apos;small town&apos; doesn&apos;t mean small dreams,
+          want to learn digital skills that pay bills, or are tired of marketing
+          fluff and want real strategies — let&apos;s connect!
         </p>
 
         <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-8 rounded-3xl border border-purple-500/20 mb-8">
@@ -48,46 +48,46 @@ const ContactUs: React.FC = () => {
         <div className="text-gray-400 mb-8">
           <p className="mb-4">
             Also, my DMs are open even if you just want to rant about bad ads
-            you&apos;ve seen— I&apos;ll probably agree and send you a meme
-            about it! 😄
+            you&apos;ve seen— I&apos;ll probably agree and send you a meme about
+            it! 😄
           </p>
           <div className="flex justify-center gap-6">
-            <a 
-              href="https://www.instagram.com/marketing.nizam/?hl=en" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.instagram.com/marketing.nizam/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-purple-400 transition-colors"
             >
               <Instagram size={24} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/nizamudheen-kc/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/in/nizamudheen-kc/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-purple-400 transition-colors"
             >
               <Linkedin size={24} />
             </a>
-            <a 
-              href="https://x.com/nizam_5359?s=21&t=-3EoI_oqgURTx18fw3qj4w" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://x.com/nizam_5359?s=21&t=-3EoI_oqgURTx18fw3qj4w"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-purple-400 transition-colors"
             >
               <Twitter size={24} />
             </a>
-            <a 
-              href="https://www.facebook.com/profile.php?id=61578681628133" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.facebook.com/profile.php?id=61578681628133"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-purple-400 transition-colors"
             >
               <Facebook size={24} />
             </a>
-            <a 
-              href="https://www.threads.com/@nizam_.udheen?igshid=NTc4MTIwNjQ2YQ==" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.threads.com/@nizam_.udheen?igshid=NTc4MTIwNjQ2YQ=="
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-purple-400 transition-colors"
               title="Threads"
             >
@@ -97,8 +97,16 @@ const ContactUs: React.FC = () => {
         </div>
 
         <div className="border-t border-purple-500/20 pt-8">
-          <p className="text-gray-400">
-            Proudly representing Kerala on the global digital stage 🌴
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Designed & Developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/mubashir-ahmad/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 transition-colors"
+            >
+              @MubashirAhmad
+            </a>
           </p>
         </div>
       </div>

@@ -9,7 +9,7 @@ import {
   ArrowRight,
   Instagram,
   Linkedin,
-  Twitter,
+  X,
   Facebook,
   MessageCircle,
 } from "lucide-react";
@@ -190,10 +190,10 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                   Starts Here
                 </span>
               </h1>
-              <div className="text-xl text-gray-300 mb-6 leading-relaxed">
-                <div className="mb-2">
+              <div className="text-xl text-gray-300 mb-4 leading-relaxed">
+                <div className="mb-1">
                   Helping brands & creators grow with AI-powered social media
-                  marketing strategies | On a mission to teach 100k students |{" "}
+                  marketing strategies | On a mission to teach 100k students{" "}
                   <TypingAnimation />
                 </div>
               </div>
@@ -263,7 +263,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                         rel="noopener noreferrer"
                         className="w-10 h-10 bg-gradient-to-br from-gray-500/20 to-purple-500/20 hover:from-gray-500/30 hover:to-purple-500/30 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-300 transition-all duration-300 hover:scale-110 border border-gray-500/20 hover:border-gray-400/40"
                       >
-                        <Twitter size={18} />
+                        <X size={18} />
                       </a>
                       <a
                         href="https://www.facebook.com/profile.php?id=61578681628133"
