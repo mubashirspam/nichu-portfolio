@@ -181,7 +181,7 @@ const Stats: React.FC = () => {
               transition={{
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 0.01,
+                duration: 15,
                 ease: "easeOut",
                 stiffness: 100,
               }}
