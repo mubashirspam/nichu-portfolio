@@ -5,6 +5,7 @@ import {
   Instagram,
   Linkedin,
   Twitter,
+  Facebook,
 } from "lucide-react";
 
 const ContactUs: React.FC = () => {
@@ -51,14 +52,46 @@ const ContactUs: React.FC = () => {
             about it! 😄
           </p>
           <div className="flex justify-center gap-6">
-            <a href="#" className="hover:text-purple-400 transition-colors">
+            <a 
+              href="https://www.instagram.com/marketing.nizam/?hl=en" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-purple-400 transition-colors"
+            >
               <Instagram size={24} />
             </a>
-            <a href="#" className="hover:text-purple-400 transition-colors">
+            <a 
+              href="https://www.linkedin.com/in/nizamudheen-kc/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-purple-400 transition-colors"
+            >
               <Linkedin size={24} />
             </a>
-            <a href="#" className="hover:text-purple-400 transition-colors">
+            <a 
+              href="https://x.com/nizam_5359?s=21&t=-3EoI_oqgURTx18fw3qj4w" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-purple-400 transition-colors"
+            >
               <Twitter size={24} />
+            </a>
+            <a 
+              href="https://www.facebook.com/profile.php?id=61578681628133" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-purple-400 transition-colors"
+            >
+              <Facebook size={24} />
+            </a>
+            <a 
+              href="https://www.threads.com/@nizam_.udheen?igshid=NTc4MTIwNjQ2YQ==" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-purple-400 transition-colors"
+              title="Threads"
+            >
+              <MessageCircle size={24} />
             </a>
           </div>
         </div>

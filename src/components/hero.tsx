@@ -5,7 +5,14 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { heroImage } from "./images";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Facebook,
+  MessageCircle,
+} from "lucide-react";
 
 // Texts for typing animation
 const TYPING_TEXTS = [
@@ -167,9 +174,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
       <div className="max-w-6xl mx-auto relative z-20">
         <div
           className={`transition-all duration-1000 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
@@ -215,10 +220,10 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative w-full max-w-lg"
+                className="relative w-full max-w-md"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                <div className="relative overflow-hidden  shadow-purple-500/20">
+                <div className="relative overflow-hidden shadow-purple-500/20">
                   <Image
                     src={heroImage}
                     alt="Nizamudheen KC - Digital Marketing Expert"
@@ -226,6 +231,60 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                     priority
                   />
                 </div>
+
+                {/* Social Media Links */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="-mt-4 flex justify-center"
+                >
+                  <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm p-3 rounded-full border border-purple-500/20 shadow-lg">
+                    <div className="flex justify-center gap-3">
+                      <a
+                        href="https://www.instagram.com/marketing.nizam/?hl=en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 rounded-full flex items-center justify-center text-pink-400 hover:text-pink-300 transition-all duration-300 hover:scale-110 border border-pink-500/20 hover:border-pink-400/40"
+                      >
+                        <Instagram size={18} />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/nizamudheen-kc/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 rounded-full flex items-center justify-center text-blue-400 hover:text-blue-300 transition-all duration-300 hover:scale-110 border border-blue-500/20 hover:border-blue-400/40"
+                      >
+                        <Linkedin size={18} />
+                      </a>
+                      <a
+                        href="https://x.com/nizam_5359?s=21&t=-3EoI_oqgURTx18fw3qj4w"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gradient-to-br from-gray-500/20 to-purple-500/20 hover:from-gray-500/30 hover:to-purple-500/30 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-300 transition-all duration-300 hover:scale-110 border border-gray-500/20 hover:border-gray-400/40"
+                      >
+                        <Twitter size={18} />
+                      </a>
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61578681628133"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gradient-to-br from-blue-600/20 to-purple-500/20 hover:from-blue-600/30 hover:to-purple-500/30 rounded-full flex items-center justify-center text-blue-500 hover:text-blue-400 transition-all duration-300 hover:scale-110 border border-blue-500/20 hover:border-blue-400/40"
+                      >
+                        <Facebook size={18} />
+                      </a>
+                      <a
+                        href="https://www.threads.com/@nizam_.udheen?igshid=NTc4MTIwNjQ2YQ=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-gradient-to-br from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 rounded-full flex items-center justify-center text-purple-400 hover:text-purple-300 transition-all duration-300 hover:scale-110 border border-purple-500/20 hover:border-purple-400/40"
+                        title="Threads"
+                      >
+                        <MessageCircle size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>

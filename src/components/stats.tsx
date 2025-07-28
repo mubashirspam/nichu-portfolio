@@ -114,14 +114,28 @@ const Stats: React.FC = () => {
 
         {/* Brand Partner Logos */}
         <div className="mt-16 max-w-6xl mx-auto">
-          <motion.p
-            className="text-gray-400 text-sm uppercase tracking-wider mb-5 text-center"
+          <motion.div
+            className="text-center mb-8 relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Trusted by Brands & Creators
-          </motion.p>
+            {/* Decorative elements */}
+
+            <span className="text-sm uppercase tracking-wider text-gray-300">
+              Trusted by
+            </span>
+            <motion.span
+              className="block text-xl md:text-2xl font-bold mt-1 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              Brands & Creators
+            </motion.span>
+
+            {/* Bottom decorative element */}
+          </motion.div>
 
           <motion.div
             className="mt-12 overflow-hidden"
@@ -131,12 +145,12 @@ const Stats: React.FC = () => {
           >
             {/* First row of logos scrolling left to right */}
             <motion.div
-              className="flex space-x-12 mb-8"
-              animate={{ x: ["-10%", "-60%"] }}
+              className="flex space-x-0 mb-8"
+              animate={{ x: ["-30%", "-60%"] }}
               transition={{
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 30,
+                duration: 15, // Faster animation (lower duration)
                 ease: "linear",
               }}
             >
@@ -152,8 +166,7 @@ const Stats: React.FC = () => {
                       <Image
                         src={brandLogos[logoIndex]}
                         alt={`Brand partner ${logoIndex + 1}`}
-                        width={180}
-                        height={90}
+                        width={200}
                         className="object-contain filter brightness-90 hover:brightness-110 transition-all duration-300"
                       />
                     </div>
@@ -163,13 +176,14 @@ const Stats: React.FC = () => {
 
             {/* Second row of logos scrolling right to left */}
             <motion.div
-              className="flex space-x-12"
+              className="flex space-x-0"
               animate={{ x: ["-60%", "-10%"] }}
               transition={{
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 35,
-                ease: "linear",
+                duration: 0.01,
+                ease: "easeOut",
+                stiffness: 100,
               }}
             >
               {Array(12)
@@ -184,10 +198,10 @@ const Stats: React.FC = () => {
                       <Image
                         src={partnerLogos[logoIndex]}
                         alt={`Brand partner ${logoIndex + 1}`}
-                        width={320}
+                        width={300}
                         height={160}
                         className="object-contain filter brightness-90 hover:brightness-110 transition-all duration-300"
-                        style={{ borderRadius: "16px" }}
+                        style={{ borderRadius: "30px" }}
                       />
                     </div>
                   );

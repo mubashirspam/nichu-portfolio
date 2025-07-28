@@ -1,75 +1,104 @@
-
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { partnerLogos } from "./images";
-import { Users } from "lucide-react";
+import {
+  Users,
+  Grid3X3,
+  LayoutGrid,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useState, useRef } from "react";
 
 const PartnerGallery: React.FC = () => {
-  const totalImages = 32;
+  const [viewMode, setViewMode] = useState<"grid" | "masonry">("masonry");
+  const [currentPage, setCurrentPage] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Create three columns of images with different arrangements
-  const createColumnImages = (startIndex: number, count: number) => {
-    const images = [];
-    for (let i = 0; i < count; i++) {
-      const imageIndex = (startIndex + i) % totalImages;
-      // Use deterministic heights based on index instead of random
-      const heightIndex = i % 3;
-      const height = heightIndex === 0 ? "h-48" : heightIndex === 1 ? "h-64" : "h-40";
-      
-      images.push({
-        src:
-          partnerLogos[imageIndex] ||
-          partnerLogos[imageIndex % partnerLogos.length],
-        id: `${startIndex}-${i}`,
-        height: height, // Deterministic height based on index
-      });
-    }
-    return images;
+  const totalImages = partnerLogos.length;
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(totalImages / itemsPerPage);
+
+  // Get current page items
+  const getCurrentPageItems = () => {
+    const startIndex = currentPage * itemsPerPage;
+    return partnerLogos.slice(startIndex, startIndex + itemsPerPage);
   };
 
-  // Create image sets for each column (doubled for infinite scroll)
-  const leftColumnImages = [
-    ...createColumnImages(0, 20),
-    ...createColumnImages(0, 20), // Duplicate for seamless loop
-  ];
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
 
-  const centerColumnImages = [
-    ...createColumnImages(20, 24),
-    ...createColumnImages(20, 24), // Duplicate for seamless loop
-  ];
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
 
-  const rightColumnImages = [
-    ...createColumnImages(44, 18),
-    ...createColumnImages(44, 18), // Duplicate for seamless loop
-  ];
+  // Container animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  // Item animation variants
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  // Masonry heights for variety
+  const getMasonryHeight = (index: number) => {
+    const heights = ["h-48", "h-56", "h-44", "h-52", "h-40", "h-60"];
+    return heights[index % heights.length];
+  };
 
   return (
     <section
-      id="partner-gallery"
-      className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-br from-purple-50/5 to-pink-50/5 overflow-hidden"
+      id="partners"
+      ref={ref}
+      className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-pink-900/10" />
+
+      <div className="max-w-7xl mx-auto relative">
+        {/* Header Section */}
         <div className="text-center mb-12 md:mb-16">
           <motion.p
             className="text-purple-400 text-sm uppercase tracking-wider mb-4"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            GALLERY
+            PARTNERS
           </motion.p>
+
           <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            My Partner <span className="text-purple-400">Diary</span>
+            My Partner <span className="text-purple-400">Gallery</span>
           </motion.h2>
+
           <motion.p
             className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             See the world through my lens: adventures in partnerships and
@@ -77,146 +106,140 @@ const PartnerGallery: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Parallax Scrolling Gallery */}
-        <div className="relative h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden rounded-3xl">
-          {/* Gradient overlays for smooth edges */}
-          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-900/20 to-transparent z-10 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900/20 to-transparent z-10 pointer-events-none" />
-
-          <div className="flex gap-4 md:gap-6 h-full">
-            {/* Left Column - Slow upward scroll */}
-            <div className="flex-1 relative overflow-hidden">
-              <motion.div
-                className="flex flex-col gap-4"
-                animate={{
-                  y: [0, (-50 * leftColumnImages.length) / 2], // Move up by half the duplicated content
-                }}
-                transition={{
-                  duration: 60, // 60 seconds for full cycle
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-              >
-                {leftColumnImages.map((image, index) => (
-                  <motion.div
-                    key={`left-${image.id}-${index}`}
-                    className={`relative ${image.height} rounded-2xl overflow-hidden shadow-lg group cursor-pointer`}
-                    whileHover={{ scale: 1.03, zIndex: 20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={`Partner ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-1"></div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Center Column - Fast upward scroll */}
-            <div className="flex-1 relative overflow-hidden">
-              <motion.div
-                className="flex flex-col gap-4"
-                animate={{
-                  y: [0, (-60 * centerColumnImages.length) / 2], // Move up faster
-                }}
-                transition={{
-                  duration: 30, // 30 seconds for full cycle (2x faster)
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-              >
-                {centerColumnImages.map((image, index) => (
-                  <motion.div
-                    key={`center-${image.id}-${index}`}
-                    className={`relative ${image.height} rounded-2xl overflow-hidden shadow-xl group cursor-pointer`}
-                    whileHover={{ scale: 1.03, zIndex: 20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={`Partner ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-[8px] border-l-white border-y-[6px] border-y-transparent ml-1"></div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Right Column - Medium upward scroll */}
-            <div className="flex-1 relative overflow-hidden">
-              <motion.div
-                className="flex flex-col gap-4"
-                animate={{
-                  y: [0, (-55 * rightColumnImages.length) / 2], // Medium speed
-                }}
-                transition={{
-                  duration: 45, // 45 seconds for full cycle
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-              >
-                {rightColumnImages.map((image, index) => (
-                  <motion.div
-                    key={`right-${image.id}-${index}`}
-                    className={`relative ${image.height} rounded-2xl overflow-hidden shadow-lg group cursor-pointer`}
-                    whileHover={{ scale: 1.03, zIndex: 20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={`Partner ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <div className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-1"></div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+        {/* View Mode Toggle */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm rounded-full p-1 border border-purple-500/20">
+            <button
+              onClick={() => setViewMode("masonry")}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                viewMode === "masonry"
+                  ? "bg-purple-600 text-white"
+                  : "text-gray-300 hover:text-white hover:bg-purple-600/50"
+              }`}
+            >
+              <LayoutGrid className="w-4 h-4 inline mr-2" />
+              Masonry
+            </button>
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                viewMode === "grid"
+                  ? "bg-purple-600 text-white"
+                  : "text-gray-300 hover:text-white hover:bg-purple-600/50"
+              }`}
+            >
+              <Grid3X3 className="w-4 h-4 inline mr-2" />
+              Grid
+            </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Scroll Indicator */}
-        <div className="text-center mt-8">
+        {/* Gallery Grid */}
+        <motion.div
+          className={`
+            grid gap-4 md:gap-6 mb-8
+            ${
+              viewMode === "grid"
+                ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-min"
+            }
+          `}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {getCurrentPageItems().map((logo, index) => (
+            <motion.div
+              key={`${currentPage}-${index}`}
+              variants={itemVariants}
+              className={`
+                group relative rounded-2xl overflow-hidden cursor-pointer
+                transition-all duration-300 hover:scale-105
+                ${viewMode === "masonry" ? getMasonryHeight(index) : "h-48"}
+                bg-gradient-to-br from-gray-800/50 to-gray-900/50
+                backdrop-blur-sm border border-gray-700/50
+                shadow-lg hover:shadow-xl hover:shadow-purple-500/20
+              `}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.25)",
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="relative w-full h-full p-2 flex items-center justify-center">
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <Image
+                  src={logo}
+                  alt={`Partner ${index + 1}`}
+                  fill
+                  className="object-contain p-2 filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+
+                {/* Shine Effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                </div>
+              </div>
+
+              {/* Corner Glow */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-purple-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-bl-2xl" />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
           <motion.div
-            className="inline-flex items-center gap-2 text-gray-400 text-sm"
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            className="flex items-center justify-center gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <div className="w-1 h-6 bg-gradient-to-b from-purple-400 to-transparent rounded-full"></div>
-            <span>Auto-scrolling gallery</span>
+            <button
+              onClick={prevPage}
+              className="p-3 rounded-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-purple-500/20 text-gray-300 hover:text-white hover:bg-purple-600/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={currentPage === 0}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === currentPage
+                      ? "bg-purple-400 scale-125"
+                      : "bg-gray-600 hover:bg-purple-400/70"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextPage}
+              className="p-3 rounded-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-purple-500/20 text-gray-300 hover:text-white hover:bg-purple-600/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={currentPage === totalPages - 1}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </motion.div>
-        </div>
+        )}
 
         {/* Stats Section */}
         <motion.div
           className="text-center mt-8 md:mt-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1 }}
         >
           <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-purple-500/20 inline-block mx-4">
@@ -231,22 +254,6 @@ const PartnerGallery: React.FC = () => {
             </p>
           </div>
         </motion.div>
-
-        {/* Speed Indicators */}
-        <div className="flex justify-center gap-8 mt-6 text-xs text-gray-500">
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-            <span>Slow</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-            <span>Fast</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-            <span>Medium</span>
-          </div>
-        </div>
       </div>
     </section>
   );
