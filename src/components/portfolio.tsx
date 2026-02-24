@@ -12,6 +12,7 @@ import Testmonials from "./testmonials";
 import Gallery from "./gallery";
 import PartnerGallery from "./partner-gallery";
 import ContactUs from "./contact-us";
+import ProductCTA from "./product-cta";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -34,6 +35,7 @@ export default function Portfolio() {
       <Stats />
       <About />
       <Service />
+      <ProductCTA />
       <Results />
       {/* <Testmonials /> */}
       <Gallery scrollToSection={scrollToSection} />
