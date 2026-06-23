@@ -110,7 +110,7 @@ const ContactV2: React.FC = () => {
 
           {/* Bottom stamp */}
           <div className="hidden md:flex items-center justify-between text-white/70 text-[11px] tracking-[0.3em] uppercase">
-            <span>Kerala · India · Worldwide</span>
+            <span>Serving Kochi · Calicut · Malappuram · Thrissur · all Kerala</span>
             <span>Available for new projects</span>
           </div>
         </div>

@@ -134,7 +134,7 @@ const AboutV2: React.FC = () => {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={src}
-                      alt=""
+                      alt={`Client of Nizamudheen KC ${i + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </div>

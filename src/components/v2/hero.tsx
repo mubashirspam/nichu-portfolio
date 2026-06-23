@@ -71,8 +71,8 @@ const HeroV2: React.FC = () => {
               transition={{ duration: 0.9, delay: 0.5 }}
               className="mt-5 text-white/75 text-sm md:text-base max-w-md leading-relaxed"
             >
-              Turning ₹5 lakh into ₹10.48 crore. 150K followers in a month.
-              Real strategy, measurable growth, zero fluff.
+              Turning ₹30 lakh in ad spend into ₹10.48 crore in revenue. 150K
+              followers in a month. Real strategy, measurable growth, zero fluff.
             </motion.p>
 
             <motion.div

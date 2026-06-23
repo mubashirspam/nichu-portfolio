@@ -153,7 +153,7 @@ const PartnerGalleryV2: React.FC = () => {
                     <div className="relative w-full h-full">
                       <Image
                         src={logo as StaticImageData}
-                        alt={`Partner ${start + i + 1}`}
+                        alt={`Brand logo of a client partnered with Nizamudheen KC for performance marketing`}
                         fill
                         className={`object-contain ${
                           conf.accent === "black" ? "invert" : ""
@@ -210,7 +210,7 @@ const PartnerGalleryV2: React.FC = () => {
                   <div className="relative w-full h-full">
                     <Image
                       src={items[spotlight] as StaticImageData}
-                      alt=""
+                      alt={`Spotlighted client brand logo — partner #${start + spotlight + 1} of Nizamudheen KC`}
                       fill
                       className="object-contain"
                       sizes="30vw"

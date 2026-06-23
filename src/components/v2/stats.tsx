@@ -59,10 +59,13 @@ const Counter: React.FC<{ stat: Stat; inView: boolean; delay?: number }> = ({
   inView,
   delay = 0,
 }) => {
-  const [v, setV] = useState(0);
+  // Initialise with the final value so the prerendered (static export) HTML
+  // contains the real number for crawlers — not a "0" starting frame.
+  const [v, setV] = useState(stat.value);
 
   useEffect(() => {
     if (!inView) return;
+    setV(0);
     const dur = 1800;
     const steps = 50;
     let i = 0;

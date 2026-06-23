@@ -27,11 +27,14 @@ const ResultsV2: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const headingBg = useScrollRevealText(ref as React.RefObject<HTMLElement | null>);
-  const [count, setCount] = useState(0);
   const target = 10.48;
+  // Start at the final value so the static HTML renders ₹10.48Cr (not ₹0.00Cr)
+  // for crawlers; reset to 0 and animate up only once scrolled into view.
+  const [count, setCount] = useState(target);
 
   useEffect(() => {
     if (!inView) return;
+    setCount(0);
     const steps = 60;
     const dur = 2200;
     let i = 0;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import StructuredData from "../components/structured-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,10 +17,41 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const SITE_URL = "https://marketingnizam.com";
+
 export const metadata: Metadata = {
-  title: "Nizamudheen KC - Digital Marketing Expert",
+  metadataBase: new URL(SITE_URL),
+  title: "Performance Marketer in Kerala | Nizamudheen KC — Marketing Nomad",
   description:
-    "Nizamudheen KC - Expert Digital Marketing Strategist from Kerala | Scaled businesses from ₹5L to ₹1.38Cr+ revenue | Specializing in Social Media Marketing, Content Strategy, Brand Building & Performance Marketing | Helping small-town businesses achieve global success through data-driven digital strategies and proven growth techniques.",
+    "Performance marketer in Kerala. Nizamudheen KC turns ad spend into revenue — ₹30L into ₹10.48 Cr across campaigns, 150K followers in a month. Real strategy.",
+  keywords: [
+    "performance marketer in Kerala",
+    "best performance marketer in Kerala",
+    "digital marketing expert Kerala",
+    "social media marketing Kerala",
+    "Nizamudheen KC",
+    "Marketing Nomad",
+  ],
+  authors: [{ name: "Nizamudheen KC" }],
+  creator: "Nizamudheen KC",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Nizamudheen KC — Marketing Nomad",
+    title: "Performance Marketer in Kerala | Nizamudheen KC — Marketing Nomad",
+    description:
+      "Performance marketer in Kerala. ₹30L ad spend turned into ₹10.48 Cr in revenue, 150K followers in a month. Real strategy, measurable growth.",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Performance Marketer in Kerala | Nizamudheen KC — Marketing Nomad",
+    description:
+      "Performance marketer in Kerala. ₹30L ad spend turned into ₹10.48 Cr in revenue, 150K followers in a month.",
+  },
 };
 
 export default function RootLayout({
@@ -58,6 +90,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className={`${geistSans.variable} ${instrumentSerif.variable} antialiased`}>
+        <StructuredData />
         {children}
       </body>
     </html>
