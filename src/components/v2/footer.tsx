@@ -8,17 +8,18 @@ const LINK_COLS = [
   {
     label: "Work",
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Case studies", href: "#gallery" },
-      { label: "Results", href: "#results" },
-      { label: "Partners", href: "#partners" },
+      { label: "Services", href: "/#services" },
+      { label: "Case studies", href: "/#gallery" },
+      { label: "Blog", href: "/blog/" },
+      { label: "Partners", href: "/#partners" },
     ],
   },
   {
     label: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/#about" },
+      { label: "FAQ", href: "/faq/" },
+      { label: "Contact", href: "/#contact" },
       { label: "Store", href: "https://app.marketingnizam.com" },
     ],
   },

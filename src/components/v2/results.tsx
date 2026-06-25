@@ -14,7 +14,7 @@ const PILLARS = [
   {
     Icon: Users,
     title: "Mentor network",
-    desc: "Trained 1,000+ aspiring marketers to launch and scale their careers.",
+    desc: "Trained 2,000+ aspiring marketers to launch and scale their careers.",
   },
   {
     Icon: Target,

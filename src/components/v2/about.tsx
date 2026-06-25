@@ -51,22 +51,23 @@ const AboutV2: React.FC = () => {
           className="text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] mb-16 md:mb-24"
           style={{ backgroundImage: headingBg, ...revealTextStyle }}
         >
-          A nomad marketer building{" "}
+          The{" "}
           <span className="inline-flex items-center gap-3 align-middle">
             <span className="inline-flex w-9 h-9 md:w-14 md:h-14 rounded-full bg-sky-400 items-center justify-center">
               <PieChart className="text-black" size={18} />
             </span>
-            smarter
+            performance marketer
           </span>{" "}
-          brands
+          in Kerala
           <br />
-          from Kerala, and{" "}
+          building a{" "}
           <span className="inline-flex items-center gap-3 align-middle">
             <span className="inline-flex w-9 h-9 md:w-14 md:h-14 rounded-full bg-[#c5f542] items-center justify-center">
               <Lightbulb className="text-black" size={18} />
             </span>
-            shipping worldwide
-          </span>
+            global brand
+          </span>{" "}
+          from a small town.
         </motion.h2>
 
         {/* Bento grid */}
@@ -177,19 +178,40 @@ const AboutV2: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Paragraph block under bento */}
-        <div className="grid md:grid-cols-2 gap-10 mt-16 md:mt-24 max-w-5xl">
-          <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
-            Kerala is witnessing a startup revolution. New businesses, fresh
-            ideas, and bold entrepreneurs are everywhere — and my mission is to
-            empower students, professionals, and creators with the skill of
-            digital marketing.
+        {/* Lead + body + mission */}
+        <div className="mt-16 md:mt-24 max-w-5xl">
+          <p className="text-2xl md:text-3xl font-medium tracking-tight text-black leading-snug max-w-3xl">
+            I&apos;m Nizamudheen KC — India&apos;s First Marketing Nomad. Not a
+            title I took lightly. A movement I&apos;m building.
           </p>
-          <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
-            I dream of teaching 100K people — turning them into confident
-            creators and helping them build powerful brands and billion-rupee
-            businesses through social media literacy.
-          </p>
+
+          <div className="grid md:grid-cols-2 gap-10 mt-10">
+            <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
+              I started in the villages of Kerala, teaching digital skills to
+              people who just needed a chance. Today I run performance marketing
+              campaigns across the UAE, India and beyond — remote-first, scaling
+              brands and training the next generation of marketers.
+            </p>
+            <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
+              As a digital marketer in Kerala, my work splits two ways: growth
+              for brands, and skills for people.
+            </p>
+          </div>
+
+          {/* Mission pull-quote */}
+          <div className="mt-12 md:mt-16 rounded-3xl bg-black text-white p-8 md:p-12">
+            <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-400 mb-5">
+              The mission
+            </p>
+            <p className="text-xl md:text-2xl lg:text-3xl font-medium tracking-tight leading-snug">
+              Prove that a digital marketing expert from a small town in Kerala
+              can build a global marketing company — ethically, profitably, at
+              scale. Target:{" "}
+              <span className="text-[#c5f542]">100,000 marketers trained</span>,{" "}
+              <span className="text-[#c5f542]">1,000 brands scaled</span>.
+              Rooted in Kerala. Operating in the UAE. Moving everywhere.
+            </p>
+          </div>
         </div>
       </div>
     </section>

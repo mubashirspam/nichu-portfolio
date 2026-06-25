@@ -1,6 +1,8 @@
 // Server-rendered JSON-LD structured data so crawlers and AI engines read it
 // directly from the static HTML (no JS execution required).
 
+import { HOME_FAQ_ITEMS } from "./v2/faq-data";
+
 const SITE_URL = "https://marketingnizam.com";
 const NAME = "Nizamudheen KC";
 const PHONE = "+91-90484-55359";
@@ -51,6 +53,7 @@ const professionalService = {
   areaServed: [
     { "@type": "State", name: "Kerala" },
     { "@type": "Country", name: "India" },
+    { "@type": "Country", name: "United Arab Emirates" },
   ],
   address: {
     "@type": "PostalAddress",
@@ -60,47 +63,10 @@ const professionalService = {
   sameAs: SAME_AS,
 };
 
-const faq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Who is the best performance marketer in Kerala?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nizamudheen KC is a Kerala-based performance marketer who has turned ₹30 lakh in ad spend into ₹10.48 crore in revenue across campaigns and grown audiences by 150K followers in a single month, serving brands and creators across Kerala and India.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What services does Nizamudheen KC offer?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Performance marketing (Meta and Google ads), social media marketing, content strategy, brand building, and one-on-one mentoring for marketers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which areas does Nizamudheen KC serve?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Based in Kerala and serving clients across India and worldwide, remote-first, including Kochi, Calicut, Malappuram, and Thrissur.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How can I contact Nizamudheen KC?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Reach out on WhatsApp or call +91 90484 55359 to discuss your project.",
-      },
-    },
-  ],
-};
-
+// Entity-level schema (Person + ProfessionalService) — safe to render on every
+// page in the layout; it describes who the site is about, site-wide.
 export default function StructuredData() {
-  const blocks = [person, professionalService, faq];
+  const blocks = [person, professionalService];
   return (
     <>
       {blocks.map((data, i) => (
@@ -111,5 +77,30 @@ export default function StructuredData() {
         />
       ))}
     </>
+  );
+}
+
+// Homepage-only FAQ schema. FAQPage structured data must only appear on a page
+// where those exact questions are visibly present — here, the homepage FAQ
+// section — so it lives separately from the global entity schema above.
+const homeFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+export function HomeFaqSchema() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaq) }}
+    />
   );
 }

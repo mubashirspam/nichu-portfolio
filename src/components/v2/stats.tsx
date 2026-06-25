@@ -46,7 +46,7 @@ const OTHERS: Stat[] = [
     Icon: Eye,
   },
   {
-    value: 1000,
+    value: 2000,
     suffix: "+",
     label: "Marketers mentored",
     sub: "From students to solopreneurs",
@@ -235,7 +235,7 @@ const StatsV2: React.FC = () => {
             <span className="text-neutral-300">•</span>
             <span>4+ years</span>
             <span className="text-neutral-300">•</span>
-            <span>500+ brands</span>
+            <span>100+ brands</span>
             <span className="text-neutral-300">•</span>
             <span>Bootstrapped</span>
             <span className="text-neutral-300">•</span>

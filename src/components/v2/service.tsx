@@ -9,44 +9,44 @@ const SERVICES = [
   {
     title: "Performance Marketing",
     description:
-      "Smart ad strategies that turn ₹5 lakh into ₹10.48 crore. ROI-focused campaigns, data-driven decisions, conversion optimization.",
+      "Meta & Google Ads built to turn spend into revenue, not just impressions. As a performance marketer in Kerala, I treat every rupee as accountable — tracked, tested and optimised toward a real business outcome. ₹1.57L turned into ₹1.5 Cr wasn't luck; it was structured targeting, sharp creative and relentless optimisation.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop",
   },
   {
-    title: "Social Media Strategy",
+    title: "Search Engine Optimization (SEO)",
     description:
-      "Build powerful online identities that make algorithms work for you. Content strategy, personal branding, community building.",
+      "When people search on Google for what you sell, do they find you or your competitor? I get your website ranking where the buyers are looking — the SEO side of being a digital marketer in Kerala that brands actually trust. Long-term, compounding, free traffic.",
     image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80&auto=format&fit=crop",
   },
   {
-    title: "1-to-1 Mentoring",
+    title: "Brand Consultation",
     description:
-      "Personalised guidance to apply these strategies to your own brand. Custom action plans, direct feedback, ongoing support.",
+      "Sometimes you don't need more ads — you need the right plan first. I help you nail positioning, messaging and growth direction before a single rupee goes into media.",
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&auto=format&fit=crop",
   },
   {
-    title: "Digital Skills Training",
+    title: "Social Media Marketing (SMM)",
     description:
-      "On a mission to turn 1 lakh people into confident digital creators. Practical workshops, real projects, career guidance.",
+      "Your customers scroll Instagram and Facebook every day — the question is whether they see you. Content strategy, posting, engagement and community building that makes the algorithm work for you.",
     image:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80&auto=format&fit=crop",
   },
   {
-    title: "Start-up Scaling",
+    title: "SEO / AEO / GEO",
     description:
-      "Built and scaled 3 startups from a laptop to profit. Growth frameworks, team building, process optimisation.",
+      "Search isn't just Google anymore. I optimise your brand to show up on Google AND inside AI answers — ChatGPT, Gemini and Perplexity. The digital marketing expert Kerala businesses need for the next decade.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
+  },
+  {
+    title: "E-commerce & Lead Generation",
+    description:
+      "Scaling D2C and e-commerce brands — including the UAE / Dubai market — with funnels that turn clicks into customers. Lead capture, nurture, retargeting and the systems that keep your cost per result dropping as you scale.",
     image:
       "https://images.unsplash.com/photo-1552664688-cf412ec27db2?w=1200&q=80&auto=format&fit=crop",
-  },
-  {
-    title: "SEO & Web Design",
-    description:
-      "Get discovered online. Websites that convert visitors into customers. SEO strategies, user-focused design, growth optimisation.",
-    image:
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&q=80&auto=format&fit=crop",
   },
 ];
 
@@ -91,7 +91,10 @@ const ServiceV2: React.FC = () => {
               everything growth.
             </motion.h2>
           </div>
-          
+          <p className="max-w-md text-neutral-600 text-base md:text-lg leading-relaxed">
+            One marketer, the full growth stack — strategy, ads, content and the
+            systems that tie them together.
+          </p>
         </div>
 
         {/* Rows */}

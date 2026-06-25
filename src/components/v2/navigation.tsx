@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Results", href: "#results" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Blog", href: "/blog/" },
+  { label: "FAQ", href: "/faq/" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const NavigationV2: React.FC = () => {
@@ -35,7 +36,7 @@ const NavigationV2: React.FC = () => {
     >
       <nav className="w-full max-w-4xl mx-auto bg-white backdrop-blur-xl border border-black/5 rounded-full pl-4 pr-2 py-2 flex items-center justify-between gap-6 shadow-lg shadow-black/5">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 whitespace-nowrap">
+        <a href="/" className="flex items-center gap-2 whitespace-nowrap">
           <div className="w-7 h-7 rounded-full bg-black flex items-center justify-center">
             <span className="text-[#c5f542] text-xs font-bold">N</span>
           </div>
@@ -60,7 +61,7 @@ const NavigationV2: React.FC = () => {
         {/* Right: Let's Talk / mobile toggle */}
         <div className="flex items-center gap-2">
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden md:inline-flex items-center gap-2 bg-black text-white text-sm px-4 py-2 rounded-full hover:bg-neutral-800 transition-colors"
           >
             Let&apos;s Talk
@@ -95,7 +96,7 @@ const NavigationV2: React.FC = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="mt-2 inline-flex items-center justify-center gap-2 bg-black text-white text-sm px-4 py-2.5 rounded-full"
           >

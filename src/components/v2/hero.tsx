@@ -60,9 +60,14 @@ const HeroV2: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-              className="font-heading italic text-white tracking-tight leading-[1.05] text-[clamp(2.5rem,7vw,6.5rem)]"
+              className="text-white"
             >
-              India&apos;s First Marketing<br />Nomad
+              <span className="block text-[11px] md:text-xs tracking-[0.35em] uppercase text-white/70 mb-4 md:mb-6">
+                Best Performance Marketer in Kerala
+              </span>
+              <span className="block font-heading italic tracking-tight leading-[1.05] text-[clamp(2.5rem,7vw,6.5rem)]">
+                India&apos;s First Marketing<br />Nomad
+              </span>
             </motion.h1>
 
             <motion.p
@@ -71,8 +76,9 @@ const HeroV2: React.FC = () => {
               transition={{ duration: 0.9, delay: 0.5 }}
               className="mt-5 text-white/75 text-sm md:text-base max-w-md leading-relaxed"
             >
-              Turning ₹30 lakh in ad spend into ₹10.48 crore in revenue. 150K
-              followers in a month. Real strategy, measurable growth, zero fluff.
+              AI-driven performance marketer in Kerala turning ₹30 lakh in ad
+              spend into ₹10.48 crore in revenue. 150K followers in a month. Real
+              strategy, measurable growth, zero fluff.
             </motion.p>
 
             <motion.div
@@ -91,11 +97,26 @@ const HeroV2: React.FC = () => {
                 </span>
               </a>
               <a
-                href="#results"
+                href="#mentorship"
                 className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm px-5 py-3 rounded-full border border-white/25 backdrop-blur-sm transition-colors"
               >
-                Get Started
+                Join 1:1 Mentoring
               </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="mt-7 flex items-center gap-2.5 text-white/70 text-[11px] md:text-xs tracking-wide flex-wrap justify-center max-w-md"
+            >
+              <span>Kerala → World</span>
+              <span className="text-white/30">·</span>
+              <span>4+ years</span>
+              <span className="text-white/30">·</span>
+              <span>100+ brands</span>
+              <span className="text-white/30">·</span>
+              <span>2,000+ marketers mentored</span>
             </motion.div>
           </div>
 

@@ -49,7 +49,7 @@ const ContactV2: React.FC = () => {
               ))}
             </span>
             <span className="text-sm tracking-wide">
-              Trusted over 500+ brands & creators
+              Trusted by 100+ brands & creators
             </span>
           </motion.div>
 

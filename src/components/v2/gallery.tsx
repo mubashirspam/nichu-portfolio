@@ -5,64 +5,79 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useScrollRevealText, revealTextStyle } from "./use-scroll-reveal";
 
-const ITEMS = [
+type CaseStudy = {
+  title: string;
+  metric?: string;
+  note: string;
+  category: string;
+  image: string;
+  accent: string;
+  size: "lg" | "sm";
+};
+
+const ITEMS: CaseStudy[] = [
   {
-    title: "EduTech Startup",
-    metric: "+2,660%",
-    note: "₹5L spent → ₹1.38Cr revenue",
-    category: "Performance Marketing",
+    title: "Skillage Academy",
+    metric: "2 Cr+ Revenue · 200+ Trained",
+    note: "Built Kerala's leading EdTech brand from the ground up — in-house team, agency (WindAge) and Academic Head, all within a year.",
+    category: "Built & Scaled · EdTech",
     image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80&auto=format&fit=crop",
     accent: "bg-[#c5f542]",
     size: "lg",
   },
   {
-    title: "Personal Branding",
-    metric: "+500%",
-    note: "140K followers gained",
-    category: "Social Media",
+    title: "WinTouch Academy",
+    metric: "₹2L → ₹2 Cr · <1 Month",
+    note: "₹2L ad spend turned into ₹2 Cr revenue for Kasaragod's first NEET coaching academy. Meta Ads, full strategy, influencer marketing.",
+    category: "Performance Marketing · EdTech",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80&auto=format&fit=crop",
+    accent: "bg-sky-400",
+    size: "sm",
+  },
+  {
+    title: "Raasta Realty",
+    note: "A creative website and Meta Ads strategy for purpose-driven real estate — built around impact, not just transactions.",
+    category: "Web + Performance · Real Estate",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop",
+    accent: "bg-black text-white",
+    size: "sm",
+  },
+  {
+    title: "Sabi Inspire",
+    note: "Full-funnel marketing for a Kerala & Dubai influencer brand. Strategy built for two markets, one brand voice.",
+    category: "Meta Ads + Strategy · Fragrance / Travel",
+    image:
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80&auto=format&fit=crop",
+    accent: "bg-[#c5f542]",
+    size: "lg",
+  },
+  {
+    title: "Mobile Mate",
+    note: "Meta Ads and creative strategy for a mobile brand — sharper campaigns, stronger angles, built to drive store interest.",
+    category: "Performance Marketing · Retail",
     image:
       "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80&auto=format&fit=crop",
     accent: "bg-sky-400",
     size: "sm",
   },
   {
-    title: "Fashion Brand",
-    metric: "1M+",
-    note: "Reach in 30 days",
-    category: "Moment Marketing",
+    title: "Lilac Clothing",
+    note: "Built brand value and a consistent online presence for a clothing label through strategy-led social and creative direction.",
+    category: "Branding · Fashion",
     image:
       "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80&auto=format&fit=crop",
     accent: "bg-black text-white",
     size: "sm",
   },
   {
-    title: "Educational Platform",
-    metric: "10K+",
-    note: "Students enrolled via smart content",
-    category: "Content Marketing",
+    title: "Blossom Store",
+    note: "Managed social media, brand value and Meta Ads end-to-end — keeping the brand active and converting.",
+    category: "Social + Performance · Retail",
     image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80&auto=format&fit=crop",
-    accent: "bg-[#c5f542]",
-    size: "sm",
-  },
-  {
-    title: "Film Campaign",
-    metric: "5M+",
-    note: "Reach in 15 days via viral campaigns",
-    category: "Growth Marketing",
-    image:
-      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80&auto=format&fit=crop",
-    accent: "bg-black text-white",
-    size: "lg",
-  },
-  {
-    title: "Paid Lead Gen",
-    metric: "1,000+",
-    note: "Quality leads via Meta ads",
-    category: "Paid Advertising",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80&auto=format&fit=crop",
     accent: "bg-sky-400",
     size: "sm",
   },
@@ -83,7 +98,7 @@ const GalleryV2: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-neutral-500 mb-4">
               <span className="inline-block w-6 h-px bg-neutral-400" />
-              Work
+              Performance Portfolio
             </div>
             <motion.h2
               className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.03]"
@@ -132,15 +147,34 @@ const GalleryV2: React.FC = () => {
                   {item.title}
                 </h3>
                 <p className="text-white/80 text-sm mb-4">{item.note}</p>
-                <span
-                  className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${item.accent}`}
-                >
-                  {item.metric}
-                </span>
+                {item.metric && (
+                  <span
+                    className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${item.accent}`}
+                  >
+                    {item.metric}
+                  </span>
+                )}
               </div>
             </motion.a>
           ))}
         </div>
+
+        {/* Closing stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-10 md:mt-14 rounded-3xl bg-black text-white px-6 py-6 md:px-10 md:py-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm md:text-base text-center"
+        >
+          <span><span className="font-semibold">₹10.48 Cr</span> revenue generated</span>
+          <span className="text-white/25">·</span>
+          <span><span className="font-semibold">100+</span> brands scaled</span>
+          <span className="text-white/25">·</span>
+          <span><span className="font-semibold">2,000+</span> marketers mentored</span>
+          <span className="text-white/25">·</span>
+          <span className="text-[#c5f542]">Kerala → UAE</span>
+        </motion.div>
       </div>
     </section>
   );
