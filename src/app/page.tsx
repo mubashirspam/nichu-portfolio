@@ -1,5 +1,6 @@
 import NavigationV2 from "../components/v2/navigation";
 import HeroV2 from "../components/v2/hero";
+import LogoMarquee from "../components/v2/logo-marquee";
 import AboutV2 from "../components/v2/about";
 import StatsV2 from "../components/v2/stats";
 import PhilosophyV2 from "../components/v2/philosophy";
@@ -24,6 +25,7 @@ export default function Home() {
       <HomeFaqSchema />
       <NavigationV2 />
       <HeroV2 />
+      <LogoMarquee />
       <StatsV2 />
       <AboutV2 />
       <PhilosophyV2 />

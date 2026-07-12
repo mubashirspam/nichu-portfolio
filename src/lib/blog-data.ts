@@ -17,8 +17,9 @@ export type BlogPost = {
   body: string;
 };
 
-const img = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=1600&q=80&auto=format&fit=crop`;
+// Blog thumbnails hosted on ImageKit. Pass the file name (e.g. "1.jpg").
+const img = (name: string) =>
+  `https://ik.imagekit.io/marketingnizam/Marketing%20nizam%20clinte%20Logo/Blog%20Thumbnail/${name}`;
 
 export const BLOG_POSTS: BlogPost[] = [
   {
@@ -30,7 +31,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Hiring Guide",
     date: "2026-02-24",
     readingTime: "6 min read",
-    image: img("1552664730-d307ca884978"),
+    image: img("8.jpg"),
     excerpt:
       "The right partner turns a modest budget into real revenue; the wrong one burns months of spend on pretty posts. Here's how to tell the difference before you sign.",
     related: [
@@ -85,7 +86,7 @@ The best digital marketer in Kerala is not the one with the biggest follower cou
     category: "Explainer",
     date: "2026-03-10",
     readingTime: "6 min read",
-    image: img("1460925895917-afdab827c52f"),
+    image: img("7.jpg"),
     excerpt:
       "Two terms, often used interchangeably, are very different in practice. Knowing which one you actually need will make you a far smarter buyer.",
     related: [
@@ -138,7 +139,7 @@ Digital marketing is the broad, long-term effort to grow your presence. Performa
     category: "Case Study",
     date: "2026-03-24",
     readingTime: "6 min read",
-    image: img("1524178232363-1fb2b075b655"),
+    image: img("9.jpg"),
     excerpt:
       "Around ₹1.57 lakh in ad spend. Roughly ₹1.5 crore in revenue. Close to a 95x return — here's the strategy, the numbers and what you can take from it.",
     related: [
@@ -189,7 +190,7 @@ One last point, aimed at you as a buyer of marketing: always ask whether a case 
     category: "SEO",
     date: "2026-04-07",
     readingTime: "6 min read",
-    image: img("1559028012-481c04fa702d"),
+    image: img("6.jpg"),
     excerpt:
       "Being invisible on Google is rarely bad luck — it's almost always a fixable combination of site structure, missing pages, a neglected profile and ignored AI search.",
     related: [
@@ -244,7 +245,7 @@ Being invisible on Google is rarely about bad luck — it is almost always a fix
     category: "Local Guide",
     date: "2026-04-21",
     readingTime: "7 min read",
-    image: img("1469474968028-56623f02e42e"),
+    image: img("5.jpg"),
     excerpt:
       "Wayanad doesn't market like Kochi. It's tourism-led and seasonal — and mastering the local fundamentals outside agencies overlook is a genuine advantage.",
     related: [
@@ -299,7 +300,7 @@ Digital marketing for Wayanad businesses is about mastering local fundamentals t
     category: "Pricing",
     date: "2026-05-05",
     readingTime: "6 min read",
-    image: img("1551288049-bebda4e38f71"),
+    image: img("4.jpg"),
     excerpt:
       "The question every owner wants answered and most marketers dodge. Here are real 2026 ranges for Kerala, what drives the price, and how to budget sensibly.",
     related: [
@@ -352,7 +353,7 @@ Digital marketing in Kerala spans a wide price range, and the right number for y
     category: "Playbook",
     date: "2026-05-19",
     readingTime: "6 min read",
-    image: img("1500485035595-cbe6f645feb1"),
+    image: img("3.jpg"),
     excerpt:
       "An unsold room tonight is revenue gone forever. Here's how Meta Ads, run well, fill rooms profitably — with lessons from live resort campaigns.",
     related: [
@@ -403,7 +404,7 @@ Filling rooms profitably with Meta Ads comes down to a clear booking objective, 
     category: "Brand Story",
     date: "2026-06-02",
     readingTime: "6 min read",
-    image: img("1470071459604-3b5ec3a7fe05"),
+    image: img("2.jpg"),
     excerpt:
       "It started in the villages of Kerala, teaching digital skills to people who needed a chance. That belief became a movement — and a title: India's First Marketing Nomad.",
     related: [
@@ -454,7 +455,7 @@ I share the story not for applause but because positioning is everything in mark
     category: "AI Search",
     date: "2026-06-16",
     readingTime: "7 min read",
-    image: img("1518020382113-a7e8fc38eac9"),
+    image: img("1.jpg"),
     excerpt:
       "Search just split into two games and most businesses only play one. SEO ranks your links, AEO makes you the answer, GEO gets you recommended by AI assistants.",
     related: [

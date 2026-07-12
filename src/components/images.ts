@@ -1,12 +1,6 @@
 // Brand logos
 
-import logo1 from "../../assets/1-min.png";
-import logo2 from "../../assets/2-min.png";
-import logo3 from "../../assets/3-min.png";
-import logo4 from "../../assets/4-min.png";
-import logo5 from "../../assets/5-min.png";
-import logo6 from "../../assets/6-min.png";
-import logo7 from "../../assets/7-min.png";
+
 
 // Partner logos
 import partner1 from "../../assets/partner/1-min.png";
@@ -44,7 +38,7 @@ import partner32 from "../../assets/partner/32-min.png";
 import heroImage from "../../assets/hero.png";
 
 // Export organized arrays
-export const brandLogos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7];
+
 
 export const partnerLogos = [
   partner1,
@@ -83,13 +77,7 @@ export { heroImage };
 
 // Export individual logos if needed
 export {
-  logo1,
-  logo2,
-  logo3,
-  logo4,
-  logo5,
-  logo6,
-  logo7,
+
   partner1,
   partner2,
   partner3,

@@ -179,40 +179,7 @@ const AboutV2: React.FC = () => {
         </div>
 
         {/* Lead + body + mission */}
-        <div className="mt-16 md:mt-24 max-w-5xl">
-          <p className="text-2xl md:text-3xl font-medium tracking-tight text-black leading-snug max-w-3xl">
-            I&apos;m Nizamudheen KC — India&apos;s First Marketing Nomad. Not a
-            title I took lightly. A movement I&apos;m building.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-10 mt-10">
-            <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
-              I started in the villages of Kerala, teaching digital skills to
-              people who just needed a chance. Today I run performance marketing
-              campaigns across the UAE, India and beyond — remote-first, scaling
-              brands and training the next generation of marketers.
-            </p>
-            <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
-              As a digital marketer in Kerala, my work splits two ways: growth
-              for brands, and skills for people.
-            </p>
-          </div>
-
-          {/* Mission pull-quote */}
-          <div className="mt-12 md:mt-16 rounded-3xl bg-black text-white p-8 md:p-12">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-neutral-400 mb-5">
-              The mission
-            </p>
-            <p className="text-xl md:text-2xl lg:text-3xl font-medium tracking-tight leading-snug">
-              Prove that a digital marketing expert from a small town in Kerala
-              can build a global marketing company — ethically, profitably, at
-              scale. Target:{" "}
-              <span className="text-[#c5f542]">100,000 marketers trained</span>,{" "}
-              <span className="text-[#c5f542]">1,000 brands scaled</span>.
-              Rooted in Kerala. Operating in the UAE. Moving everywhere.
-            </p>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

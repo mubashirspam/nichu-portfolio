@@ -1,91 +1,77 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-const VIDEO_URL = "https://ik.imagekit.io/8i3ek2gje/noutput.mp4?tr=orig";
+const VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4";
 
 const HeroV2: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const durationRef = useRef(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const onMeta = () => {
-      if (isFinite(video.duration)) durationRef.current = video.duration;
-    };
-    video.addEventListener("loadedmetadata", onMeta);
-    if (video.readyState >= 1) onMeta();
-    return () => video.removeEventListener("loadedmetadata", onMeta);
-  }, []);
-
-  useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    const video = videoRef.current;
-    const duration = durationRef.current;
-    if (!video || !duration) return;
-    const t = Math.min(progress * duration, duration - 0.05);
-    try {
-      video.currentTime = t;
-    } catch {
-      /* seek errors before buffer ready */
-    }
-  });
+  // Frame grows to full-bleed as you scroll: padding & radius → 0, width → full.
+  // A short scroll (~40% of the section) snaps it open on both mobile & desktop.
+  const pad = useTransform(scrollYProgress, [0, 0.4], [isDesktop ? 24 : 14, 0]);
+  const radius = useTransform(scrollYProgress, [0, 0.4], [isDesktop ? 56 : 36, 0]);
+  const maxWidth = useTransform(scrollYProgress, [0, 0.4], [1400, 3000]);
 
   return (
-    <section id="home" ref={sectionRef} className="relative h-[400vh]">
-      <div className="sticky top-0 h-screen flex items-center justify-center md:p-6">
-        <div className="relative w-full h-full max-w-[1400px] overflow-hidden rounded-none md:rounded-[25px] lg:rounded-[40px]">
+    <section id="home" ref={sectionRef} className="relative h-[180vh] md:h-[400vh]">
+      <motion.div
+        className="sticky top-0 h-screen flex items-center justify-center"
+        style={{ padding: pad }}
+      >
+        <motion.div
+          className="relative w-full h-full overflow-hidden"
+          style={{ maxWidth, borderRadius: radius }}
+        >
           <video
-            ref={videoRef}
             src={VIDEO_URL}
             className="absolute inset-0 w-full h-full object-cover"
             preload="metadata"
+            autoPlay
             muted
+            loop
             playsInline
           />
 
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/10" />
 
-          <div className="relative h-full flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16">
+          <div className="relative h-full flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-16 py-16">
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
               className="text-white"
             >
-              <span className="block text-[11px] md:text-xs tracking-[0.35em] uppercase text-white/70 mb-4 md:mb-6">
+              <span className="inline-flex items-center gap-2 mb-4 md:mb-6 px-3.5 py-1.5 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm text-[10px] md:text-[11px] tracking-[0.22em] md:tracking-[0.25em] uppercase text-black font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c5f542] shadow-[0_0_8px_#c5f542]" />
                 Best Performance Marketer in Kerala
               </span>
-              <span className="block font-heading italic tracking-tight leading-[1.05] text-[clamp(2.5rem,7vw,6.5rem)]">
+              <span className="block font-heading italic text-white tracking-tight leading-[1.05] text-[clamp(2.1rem,7vw,6.5rem)] drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]">
                 India&apos;s First Marketing<br />Nomad
               </span>
             </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.5 }}
-              className="mt-5 text-white/75 text-sm md:text-base max-w-md leading-relaxed"
-            >
-              AI-driven performance marketer in Kerala turning ₹30 lakh in ad
-              spend into ₹10.48 crore in revenue. 150K followers in a month. Real
-              strategy, measurable growth, zero fluff.
-            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="mt-8 flex items-center gap-3 flex-wrap justify-center"
+              className="mt-6 md:mt-8 flex items-center gap-3 flex-wrap justify-center"
             >
               <a
                 href="#contact"
@@ -98,34 +84,21 @@ const HeroV2: React.FC = () => {
               </a>
               <a
                 href="#mentorship"
-                className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm px-5 py-3 rounded-full border border-white/25 backdrop-blur-sm transition-colors"
+                className="inline-flex items-center gap-2 bg-[#c5f542] text-black font-medium text-sm px-5 py-3.5 rounded-full hover:bg-[#b3e436] transition-colors"
               >
                 Join 1:1 Mentoring
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-7 flex items-center gap-2.5 text-white/70 text-[11px] md:text-xs tracking-wide flex-wrap justify-center max-w-md"
-            >
-              <span>Kerala → World</span>
-              <span className="text-white/30">·</span>
-              <span>4+ years</span>
-              <span className="text-white/30">·</span>
-              <span>100+ brands</span>
-              <span className="text-white/30">·</span>
-              <span>2,000+ marketers mentored</span>
-            </motion.div>
+            
           </div>
 
           <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 text-white/70 text-[11px] tracking-[0.3em] uppercase flex items-center gap-2 z-10">
             <span className="inline-block w-6 h-px bg-white/50" />
             Scroll
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

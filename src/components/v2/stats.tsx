@@ -162,6 +162,17 @@ const StatsV2: React.FC = () => {
               <FEATURED.Icon size={20} className="text-[#c5f542]" />
             </div>
 
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.5 }}
+              className="mt-4 md:mt-6 text-white/95 text-base md:text-lg max-w-md leading-relaxed"
+            >
+              AI-driven performance marketer in Kerala turning ₹30 lakh in ad
+              spend into ₹10.48 crore in revenue. 150K followers in a month. Real
+              strategy, measurable growth, zero fluff.
+            </motion.p>
+
             <div className="relative">
               <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tight leading-none">
                 <Counter stat={FEATURED} inView={inView} />
